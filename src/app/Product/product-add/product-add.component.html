@@ -1,0 +1,36 @@
+
+ <div class="container pt-5">
+  <h1 class="mb-3">Add Products</h1>
+
+  <form #createProduct="ngForm" class="col-6">
+    <div class="form-group">
+      <label for="name">Product Name</label>
+      <input [(ngModel)]="prodName" name="prodName" type="text" class="form-control" id="name" placeholder="Mobile">
+    </div>
+    <div class="form-group">
+      <label for="price">Product Price</label>
+      <input [(ngModel)]="prodPrice" name="prodPrice" type="text" class="form-control" id="price" placeholder="Rs.">
+    </div>
+    <div class="form-group">
+      <label for="quantity">Product Quantity</label>
+      <input [(ngModel)]="prodQty" name="prodQty" type="text" class="form-control" id="quantity" placeholder="Kg/Unit">
+    </div>
+    <div class="form-group">
+      <label for="description">Product Description</label>
+      <input [(ngModel)]="prodDescription" name="prodDescription" type="text" class="form-control" id="description" placeholder="Smart phone...">
+    </div>
+    <div class="form-group">
+      <label for="category">Product Category</label>
+      <select [(ngModel)]="prodCategory" name="prodCategory" id="category" class="custom-select">
+        <option selected>Select Category</option>
+        <option *ngFor="let cat of allCategoryData" [value]="cat.Id">
+          {{cat.Id}} {{cat.Name}} 
+        </option>
+      </select>
+    </div>
+    <button *ngIf="!productById" type="submit" class="btn btn-primary" (click)="insertProdData()">ADD PRODUCT</button>
+    <button *ngIf="productById" type="submit" class="btn btn-primary" (click)="updateProdData()">UPDATE PRODUCT</button>
+  </form>
+
+</div>
+

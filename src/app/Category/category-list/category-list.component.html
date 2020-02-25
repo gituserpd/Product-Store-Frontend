@@ -1,0 +1,42 @@
+<div class="container pt-5">
+  <h1 class="mb-3">Category Details</h1>
+  <table class="table w-100">
+    <tr class="thead-dark">
+      <th scope="col">CATEGORY ID</th>
+      <th scope="col">CATEGORY NAME</th>
+      <th scope="col">DESCRIPTION</th>
+      <th scope="col">CREATED BY</th>
+      <th scope="col">CREATED ON</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr *ngIf="status==0">
+      <td colspan="7">
+        <img src="src/assets/basicloader.gif" width="200px" height="100%">
+      </td>
+    </tr>
+    <tr *ngFor="let cat of allCategoryData">
+      <td>{{cat.Id}}</td>
+      <td>{{cat.Name}}</td>
+      <td>{{cat.Description}}</td>
+      <td>{{cat.CreatedBy}}</td>
+      <td>{{cat.CreatedOn}}</td>
+      <td>
+        <button [routerLink]="['/categoryview',cat.Id]" class="badge badge-success">VIEW</button>
+      </td>
+      <td>
+        <button [routerLink]="['/categoryupdate',cat.Id]" class="badge badge-primary">EDIT</button>
+      </td>
+      <td>
+        <button (click)="deleteCategory(cat.Id)" class="badge badge-danger">DELETE</button>
+      </td>
+    </tr>
+
+  </table>
+
+  <div>
+    <button class="btn btn-primary" [routerLink]="['/categoryadd']">ADD CATEGORY</button>
+  </div>
+
+</div>

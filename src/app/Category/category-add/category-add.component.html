@@ -1,0 +1,17 @@
+<div class="container pt-5">
+  <h1 class="mb-3">Insert Category</h1>
+
+  <form #createCategory="ngForm" class="col-6">
+    <div class="form-group">
+      <label for="name">Category Name</label>
+      <input [(ngModel)]="catName" name="catName" type="text" class="form-control" id="name" placeholder="Electronics">
+    </div>
+    <div class="form-group">
+      <label for="description">Category Description</label>
+      <input [(ngModel)]="catDescription" name="catDescription" type="text" class="form-control" id="description" placeholder="Eletronic devices...">
+    </div>
+    <button *ngIf="!categoryById" type="submit" class="btn btn-primary" (click)="insertCatData()">ADD CATEGORY</button>
+    <button *ngIf="categoryById" type="submit" class="btn btn-primary" (click)="updateCatData()">UPDATE CATEGORY</button>
+  </form>
+
+</div>

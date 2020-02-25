@@ -1,0 +1,8 @@
+.container-main{
+    min-height: 100vh;
+}
+.nav-local{
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}

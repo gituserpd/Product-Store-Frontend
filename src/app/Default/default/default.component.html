@@ -1,0 +1,14 @@
+
+<div class="row default">
+  <div class="col-sm-12 col-md-6 side-left text-center">
+      <h1 class="display-4 m-5 Welcome-text">WELCOME TO PRODUCT STORE</h1>
+      <button [routerLink]="['/home/login']" class="btn btn-outline-light m-2">LOGIN</button>
+      <button [routerLink]="['/home/register']" class="btn btn-outline-light m-2">REGISTER</button>
+    <div class="copyright p-5 text-center w-100">
+      All Rights Resereved &copy; ProductStore
+    </div>
+  </div><!--side-left-->
+  <div class="col-sm-12 col-md-6 side-right vertical-center">
+    <router-outlet></router-outlet>
+  </div><!--sided-right-->
+</div><!--row-->

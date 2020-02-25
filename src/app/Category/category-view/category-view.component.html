@@ -1,0 +1,12 @@
+<div class="container pt-5">
+  <div class="card mt-5">
+    <div class="card-header">
+      CATEGORY
+    </div>
+    <div *ngIf="categoryById" class="card-body">
+      <h4 class="card-title">{{categoryById.Name}}</h4>
+      <p class="card-text">{{categoryById.Description}}</p>
+      <a [routerLink]="['/categoryupdate',categoryById.Id]" class="btn btn-primary">EDIT</a>
+    </div>
+  </div>
+</div>

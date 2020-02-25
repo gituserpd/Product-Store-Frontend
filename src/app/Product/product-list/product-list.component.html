@@ -1,0 +1,39 @@
+<div class="container pt-5">
+  <h1 class="mb-3">Products Details</h1>
+  <table class="table w-100">
+    <tr class="thead-dark">
+      <th scope="col">PRODUCT ID</th>
+      <th scope="col">PRODUCT NAME</th>
+      <th scope="col">PRODUCT CETEGORY</th>
+      <th scope="col">PRICE</th>
+      <th scope="col">QUANTITY</th>
+      <th scope="col">DESCRIPTION</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let prod of allProductData">
+      <td>{{prod.Id}}</td>
+      <td>{{prod.Name}}</td>
+      <td>{{prod.CategoryName}}</td>
+      <td>{{prod.Price}}</td>
+      <td>{{prod.Quantity}}</td>
+      <td>{{prod.Description}}</td>
+      <td>
+        <button [routerLink]="['/productview',prod.Id]" class="badge badge-success">VIEW</button>
+      </td>
+      <td>
+        <button [routerLink]="['/productupdate',prod.Id]" class="badge badge-primary">EDIT</button>
+      </td>
+      <td>
+        <button (click)="deleteProduct(prod.Id)" class="badge badge-danger">DELETE</button>
+      </td>
+    </tr>
+
+  </table>
+
+  <div>
+    <button class="btn btn-primary" [routerLink]="['/productadd']">ADD PRODUCT</button>
+  </div>
+
+</div>

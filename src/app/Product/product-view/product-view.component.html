@@ -1,0 +1,16 @@
+<div class="container pt-5">
+  <div class="card mt-5">
+    <div class="card-header">
+      PRODUCT
+    </div>
+    <div *ngIf="productById" class="card-body">
+      <h4 class="card-title">{{productById.Name}}</h4>
+      <p class="card-text">{{productById.Description}}</p>
+      <h5>PRICE: {{productById.Price}}</h5>
+      <h5>QUANTITY: {{productById.Quantity}}</h5>
+      <h5>CREATED BY: {{productById.CreatedBy}}</h5>
+      <h5>CREATED ON : {{productById.CreatedOn}}</h5>
+      <a [routerLink]="['/productupdate',productById.Id]" class="btn btn-primary">EDIT</a>
+    </div>
+  </div>
+</div>
