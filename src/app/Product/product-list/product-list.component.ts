@@ -10,40 +10,43 @@ import { Router } from '@angular/router';
 export class ProductListComponent implements OnInit {
   public allProductData: any;
   public productById: any;
+  public status:number = null;
 
   constructor(public productService: ProductService, public router: Router) { }
 
   ngOnInit() {
-    console.log("Product Details : \n");
+    this.status=0;
     this.getProductData();
   }
 
   public getProductData: any = () => {
     this.productService.getAllData().subscribe(
       data => {
-        console.log(data);
+        this.status=1;
         this.allProductData = data;
       },
       error => {
-        console.log("Error in getAllData:- ");
+        this.status=-1;
         console.log(error.errorMessage);
       }
     )
   }
 
   public deleteProduct: any = (id: number) => {
-    this.productService.deleteData(id).subscribe(
-      data => {
-        console.log("Success Deletion");
-        setTimeout(() => {
-          this.router.navigate(['/productlist']);
-        }, 2000);
-      },
-      error => {
-        console.log("Error Deletion:- ");
-        console.log(error.errorMessage);
-      }
-    )
+    let choice = confirm("Are you sure want to Delete?");
+    if(choice){
+      this.productService.deleteData(id).subscribe(
+        data => {
+          alert("Delete Successful!");
+            this.getProductData();
+        },
+        error => {
+          console.log(error.errorMessage);
+          alert("Sorry you can't Delete This Category!");
+        }
+      )
+    }
+    
   }
 
 }

@@ -12,6 +12,20 @@
       <th></th>
       <th></th>
     </tr>
+    <tr *ngIf="status==0&&allProductData==null">
+      <td colspan="7">
+        <img src="../../../assets/images/lineloader.gif" width="100%" height="100%">
+      </td>
+    </tr>
+    <tr *ngIf="status==-1&&allProductData==null">
+      <td></td>
+      <td></td>
+      <td colspan="3">
+        <img src="../../../assets/images/error.gif" width="" height="60%">
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
     <tr *ngFor="let prod of allProductData">
       <td>{{prod.Id}}</td>
       <td>{{prod.Name}}</td>
@@ -20,13 +34,19 @@
       <td>{{prod.Quantity}}</td>
       <td>{{prod.Description}}</td>
       <td>
-        <button [routerLink]="['/productview',prod.Id]" class="badge badge-success">VIEW</button>
+        <a [routerLink]="['/productview',prod.Id]">
+          <img class="link-img" src="../../../assets/images/view.png" title="View">
+        </a>
       </td>
       <td>
-        <button [routerLink]="['/productupdate',prod.Id]" class="badge badge-primary">EDIT</button>
+        <a [routerLink]="['/productupdate',prod.Id]">
+          <img class="link-img" src="../../../assets/images/edit.png" title="Edit">
+        </a>
       </td>
       <td>
-        <button (click)="deleteProduct(prod.Id)" class="badge badge-danger">DELETE</button>
+        <a (click)="deleteProduct(prod.Id)">
+          <img class="link-img" src="../../../assets/images/delete.png" title="Delete">
+        </a>
       </td>
     </tr>
 

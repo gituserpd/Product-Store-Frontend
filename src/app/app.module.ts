@@ -5,8 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DefaultComponent } from './default/default/default.component';
-import { LoginComponent } from './default/login/login.component';
-import { RegisterComponent } from './default/register/register.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
 import { ProductViewComponent } from './product/product-view/product-view.component';
 import { ProductAddComponent } from './product/product-add/product-add.component';
@@ -15,12 +13,12 @@ import { CategoryViewComponent } from './category/category-view/category-view.co
 import { CategoryListComponent } from './category/category-list/category-list.component';
 import { HttpClientModule } from '@angular/common/http';
 
+ 
+
 @NgModule({
   declarations: [
     AppComponent,
     DefaultComponent,
-    LoginComponent,
-    RegisterComponent,
     ProductListComponent,
     ProductViewComponent,
     ProductAddComponent,
@@ -29,6 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
     CategoryListComponent
   ],
   imports: [
+    // BrowserAnimationsModule,
+    // ToastModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

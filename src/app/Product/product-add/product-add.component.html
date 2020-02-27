@@ -26,6 +26,10 @@
         <option *ngFor="let cat of allCategoryData" [value]="cat.Id">
           {{cat.Id}} {{cat.Name}} 
         </option>
+        <option *ngIf="allCategoryData==null&&catStatus==0" 
+        class="spinner-border text-primary spinner-border-sm" role="status">
+            <span class="sr-only">Loading...</span>
+        </option>
       </select>
     </div>
     <button *ngIf="!productById" type="submit" class="btn btn-primary" (click)="insertProdData()">ADD PRODUCT</button>

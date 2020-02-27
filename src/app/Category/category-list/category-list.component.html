@@ -11,25 +11,40 @@
       <th></th>
       <th></th>
     </tr>
-    <tr *ngIf="status==0">
+    <tr *ngIf="status==0&&allCategoryData==null">
       <td colspan="7">
-        <img src="src/assets/basicloader.gif" width="200px" height="100%">
+        <img src="../../../assets/images/lineloader.gif" width="100%" height="100%">
       </td>
+    </tr>
+    <tr *ngIf="status==-1&&allCategoryData==null">
+      <td></td>
+      <td></td>
+      <td colspan="3">
+        <img src="../../../assets/images/error.gif" width="" height="60%">
+      </td>
+      <td></td>
+      <td></td>
     </tr>
     <tr *ngFor="let cat of allCategoryData">
       <td>{{cat.Id}}</td>
       <td>{{cat.Name}}</td>
       <td>{{cat.Description}}</td>
       <td>{{cat.CreatedBy}}</td>
-      <td>{{cat.CreatedOn}}</td>
+      <td>{{cat.CreatedOn|date}}</td>
       <td>
-        <button [routerLink]="['/categoryview',cat.Id]" class="badge badge-success">VIEW</button>
+        <a [routerLink]="['/categoryview',cat.Id]">
+          <img class="link-img" src="../../../assets/images/view.png" title="View">
+        </a>
       </td>
       <td>
-        <button [routerLink]="['/categoryupdate',cat.Id]" class="badge badge-primary">EDIT</button>
+        <a [routerLink]="['/categoryupdate',cat.Id]">
+          <img class="link-img" src="../../../assets/images/edit.png" title="Edit">
+        </a>
       </td>
       <td>
-        <button (click)="deleteCategory(cat.Id)" class="badge badge-danger">DELETE</button>
+        <a (click)="deleteCategory(cat.Id)">
+          <img class="link-img" src="../../../assets/images/delete.png" title="Delete">
+        </a>
       </td>
     </tr>
 

@@ -1,18 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs/internal/Observable';
-// import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryService {
 
-  public baseUrl:any = "http://localhost/Tanveer.ProductStore.Business/ps/bl"
+  public baseUrl:any = environment.baseUrl;
 
-  constructor(private http:HttpClient) { 
-    console.log("Category service constructor called");
-  }
+  constructor(private http:HttpClient) { }
 
   public getAllData():Observable<any>{
     let url = `${this.baseUrl}/categories`;

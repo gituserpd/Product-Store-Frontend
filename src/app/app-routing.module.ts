@@ -7,21 +7,10 @@ import { CategoryAddComponent } from './category/category-add/category-add.compo
 import { CategoryViewComponent } from './category/category-view/category-view.component';
 import { ProductAddComponent } from './product/product-add/product-add.component';
 import { ProductViewComponent } from './product/product-view/product-view.component';
-import { LoginComponent } from './default/login/login.component';
-import { RegisterComponent } from './default/register/register.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'productlist', pathMatch: 'full' },
-  {
-    path: 'home',
-    component: ProductListComponent,
-    children: [
-      { path: '', redirectTo: 'login', pathMatch: 'full' },
-      { path: 'login', component: LoginComponent },
-      { path: 'register', component: RegisterComponent },
-      { path: '**', component: LoginComponent },
-    ]
-  },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: DefaultComponent },
   { path: 'productlist', component: ProductListComponent },
   { path: 'productview/:id', component: ProductViewComponent },
   { path: 'productadd', component: ProductAddComponent },
@@ -30,7 +19,7 @@ const routes: Routes = [
   { path: 'categoryview/:id', component: CategoryViewComponent },
   { path: 'categoryadd', component: CategoryAddComponent },
   { path: 'categoryupdate/:id', component: CategoryAddComponent },
-  { path: '**', component: ProductListComponent }
+  { path: '**', component: DefaultComponent }
 ];
 
 @NgModule({

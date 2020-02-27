@@ -19,14 +19,15 @@ export class ProductAddComponent implements OnInit {
   public prodDescription: string;
   public prodCategory: number;
   public prodCreateBy: number = 1;
+  public catStatus:number;
+
 
   constructor(
     public productService: ProductService, public categoryService: CategoryService,
-    private router: Router, private activatedRoute: ActivatedRoute) {
-    console.log("Insert Product Component");
-  }
+    private router: Router, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
+    this.catStatus=0;
     this.getCategoryData();
     this.productId = this.activatedRoute.snapshot.paramMap.get('id');
     if (this.productId) {
@@ -35,10 +36,15 @@ export class ProductAddComponent implements OnInit {
   }
 
   public getCategoryData: any = () => {
+    this.allCategoryData=null;
     this.categoryService.getAllData().subscribe(
       data => {
+        this.catStatus=1
         this.allCategoryData = data;
-        console.log(this.allCategoryData);
+      },
+      error=>{
+        this.catStatus=0;
+        console.log(error.errorMessage);
       }
     )
   }
@@ -52,18 +58,13 @@ export class ProductAddComponent implements OnInit {
       "Description": this.prodDescription,
       "CreatedBy": this.prodCreateBy
     }
-    //console.log(prodData);
     this.productService.insertData(prodData).subscribe(
       data => {
-        console.log("Creation Successful");
-        setTimeout(() => {
-          console.log("Inserted Prod Data");
-          console.log(prodData);
-          this.router.navigate(['productlist'])
-        }, 2000);
+          this.router.navigate(['productlist']);
       },
       error => {
-        console.log("Error in Insertion");
+        console.log(error.errorMessage);
+        alert("Error in Adding");
       }
     )
   }
@@ -76,18 +77,15 @@ export class ProductAddComponent implements OnInit {
       "Price": this.prodPrice,
       "Quantity": this.prodQty,
       "Description": this.prodDescription,
-      "CreatedBy": ""
+      "CreatedBy": this.prodCreateBy
     }
-    console.log(prodData);
     this.productService.updateData(prodData.Id, prodData).subscribe(
       data => {
-        console.log("Creation Successful");
-        setTimeout(() => {
-          this.router.navigate(['productlist'])
-        }, 2000);
+          this.router.navigate(['productlist']);
       },
       error => {
-        console.log("Error in Insertion");
+        console.log(error.errorMessage);
+        alert("Error in Update");
       }
     )
   }
@@ -95,7 +93,6 @@ export class ProductAddComponent implements OnInit {
   public getProductDataById: any = (id: Number) => {
     this.productService.getDataById(id).subscribe(
       data => {
-        // console.log(data);
         this.productById = data;
         this.prodName = data.Name;
         this.prodDescription = data.Description;
@@ -104,7 +101,6 @@ export class ProductAddComponent implements OnInit {
         this.prodCategory = data.CategoryId;
       },
       error => {
-        console.log("Error in getProductDataById:- ");
         console.log(error.errorMessage);
       }
     )

@@ -16,10 +16,7 @@ export class ProductViewComponent implements OnInit {
   ngOnInit() {
     this.productId = this.activatedRoute.snapshot.paramMap.get('id');
     if (this.productId) {
-      console.log(this.productId);
       this.getProductDataById(this.productId);
-    } else {
-      console.log("No ID Found");
     }
   }
 
